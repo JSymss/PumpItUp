@@ -14,9 +14,14 @@ public class PlayerController : MonoBehaviour
 
     public static event HitCorrectBalloon OnHit;
 
+    private void Start()
+    {
+        goalBalloonScale = goalBalloon.transform.localScale.x;
+    }
+
     public void OnCorrectBalloonHit()
     {
-        goalBalloonScale += 0.1f;
+        goalBalloonScale += 1f;
         goalBalloon.transform.localScale = new Vector3(goalBalloonScale, goalBalloonScale, goalBalloonScale);
         print("Increasing size");
     }
