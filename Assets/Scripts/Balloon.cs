@@ -30,16 +30,20 @@ public class Balloon : MonoBehaviour
 		private static float s_flLastDeathSound = 0f;
 		
 		public AudioSource lifetimeEndSound;
-		public AudioSource collisionSound;
+		public AudioSource pop;
 
 		public Vector3 speed = new Vector3(0,10,0);
 		public float minSpeed = 10f;
 		public float maxSpeed = 20f;
 
+		public int colorIndex;
+
 		void Start()
 		{
 			// Assign a random colour
-			var balloonColor = (BalloonColor) Random.Range(0, 5);
+			colorIndex = Random.Range(0, 5);
+			
+			var balloonColor = (BalloonColor) colorIndex;
 			SetColor(balloonColor);
 
 			destructTime = Time.time + lifetime + Random.value;
@@ -97,14 +101,13 @@ public class Balloon : MonoBehaviour
 		void OnCollisionEnter( Collision collision )
 		{
 			print("Balloon hit the platform, destroying balloon");
-			SpawnParticles(lifetimeEndParticlePrefab,lifetimeEndSound);
 			Destroy(gameObject);
 		}
 
 		public void HitBalloon()
 		{
 			print("You hit the balloon!");
-			SpawnParticles(popPrefab,lifetimeEndSound);
+			SpawnParticles(popPrefab,SoundManager.instance.pop);
 			Destroy(gameObject);
 		}
 		public void SetColor( BalloonColor color )
@@ -132,6 +135,18 @@ public class Balloon : MonoBehaviour
 			}
 			print("invalid material");
 			return new Material(invalid);
+		}
+
+		public bool CheckColor(int crosshairIndex)
+		{
+			if (crosshairIndex == colorIndex)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 

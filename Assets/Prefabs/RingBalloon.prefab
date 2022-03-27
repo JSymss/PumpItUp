@@ -151,7 +151,8 @@ MonoBehaviour:
   minVol: 0.25
   maxVol: 0.75
   lifetimeEndSound: {fileID: 0}
-  collisionSound: {fileID: 0}
+  pop: {fileID: 6846115116202575508, guid: bf87a5984b4fb924ab2a5f86bd6ae58b, type: 3}
   speed: {x: 0, y: 10, z: 0}
   minSpeed: 10
   maxSpeed: 20
+  colorIndex: 0

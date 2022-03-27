@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="243053c2-997a-463e-8626-705be0c0fb6e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PumpItUp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PumpItUp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Orange.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Orange.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Pink.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Pink.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Purple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Purple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HeartBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HeartBalloon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RingBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RingBalloon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/StandardBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/StandardBalloon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/StarBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/StarBalloon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XBalloon.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Balloon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Balloon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +38,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Reticle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.liminal.sdk@f3d68e9ffc68f18dec4903f0622e7b7425c24152/SDK/Frameworks/SteamVR/InteractionSystem/Longbow/Scripts/Balloon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Balloon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.liminal.sdk@f3d68e9ffc68f18dec4903f0622e7b7425c24152/SDK/Frameworks/SteamVR/InteractionSystem/Longbow/Scripts/BalloonSpawner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RotatingMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="26k7L35OO7OHT5nk4HCOvwRA3I5" />
   <component name="ProjectViewState">
