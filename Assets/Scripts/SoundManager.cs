@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public AudioSource shoot, pop, inflate;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
     }

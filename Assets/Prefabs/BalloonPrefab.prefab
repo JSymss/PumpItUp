@@ -136,16 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   red: {fileID: 2100000, guid: 2b5536d7f4e542d4ca1c0a70f44e3f78, type: 2}
   orange: {fileID: 2100000, guid: 895ccab5c1b51804186a0448aea82cd2, type: 2}
-  yellow: {fileID: 2100000, guid: 0c1d01f0ce6feea4fac0166755991d73, type: 2}
+  blue: {fileID: 2100000, guid: bfbfcbf4cec8baa4d8a10dac5a68897e, type: 2}
   green: {fileID: 2100000, guid: 9ec00d41279032f409f057f81ecbd1d6, type: 2}
   purple: {fileID: 2100000, guid: 397ff9b7699f3994d86e6c0f84695e58, type: 2}
   invalid: {fileID: 0}
-  heart: {fileID: -6553401726054876227, guid: e4e41e90345f1834fa363bc99dc0b509, type: 3}
-  ring: {fileID: 4032104003180991184, guid: 6904bf5cc97d2f643bd52575bd3e202e, type: 3}
-  star: {fileID: -5801228030656462994, guid: fc27b0ef5418a40498379e8a7ddc6479, type: 3}
-  standard: {fileID: 2540817853737639666, guid: a965a7959e8480d4a8276eb4c78eabcd,
-    type: 3}
-  xShape: {fileID: 866263450512255620, guid: a55d42e1193a29f4ba420b0840ac28ea, type: 3}
   popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
     type: 3}
   maxVelocity: 5
@@ -156,7 +150,8 @@ MonoBehaviour:
   minVol: 0.25
   maxVol: 0.75
   lifetimeEndSound: {fileID: 0}
-  collisionSound: {fileID: 0}
+  pop: {fileID: 0}
   speed: {x: 0, y: 10, z: 0}
   minSpeed: 10
   maxSpeed: 20
+  colorIndex: 0

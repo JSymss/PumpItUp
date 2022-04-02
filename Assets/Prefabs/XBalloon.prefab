@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   red: {fileID: 2100000, guid: 2b5536d7f4e542d4ca1c0a70f44e3f78, type: 2}
   orange: {fileID: 2100000, guid: 895ccab5c1b51804186a0448aea82cd2, type: 2}
-  yellow: {fileID: 2100000, guid: 0c1d01f0ce6feea4fac0166755991d73, type: 2}
+  blue: {fileID: 2100000, guid: bfbfcbf4cec8baa4d8a10dac5a68897e, type: 2}
   green: {fileID: 2100000, guid: 9ec00d41279032f409f057f81ecbd1d6, type: 2}
   purple: {fileID: 2100000, guid: 397ff9b7699f3994d86e6c0f84695e58, type: 2}
   invalid: {fileID: 0}

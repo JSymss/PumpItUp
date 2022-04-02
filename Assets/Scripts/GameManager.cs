@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public MeshRenderer reticle;
+    public MeshRenderer gunPrimary, gunSecondary;
     public Material[] colors;
     public float switchDuration = 5f;
     public float switchTime;
-    public static int crosshairColorIndex;
+    public static int ColorIndex;
     
     void Start()
     {
         switchTime = switchDuration;
         
-        crosshairColorIndex = Random.Range(0, colors.Length);
-        reticle.material = colors[crosshairColorIndex];
+        ColorIndex = Random.Range(0, colors.Length);
+        gunPrimary.material = colors[ColorIndex];
+        gunSecondary.material = colors[ColorIndex];
     }
 
     
@@ -24,8 +25,9 @@ public class GameManager : MonoBehaviour
     {
         if (Time.time > switchTime)
         {
-            crosshairColorIndex = Random.Range(0, colors.Length);
-            reticle.material = colors[crosshairColorIndex];
+            ColorIndex = Random.Range(0, colors.Length);
+            gunPrimary.material = colors[ColorIndex];
+            gunSecondary.material = colors[ColorIndex];
             
             switchTime = Time.time + switchDuration;
         }

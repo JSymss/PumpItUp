@@ -3,9 +3,9 @@ using System.Collections;
  
 public class Balloon : MonoBehaviour
 	{
-		public enum BalloonColor { Red, Orange, Yellow, Green, Purple};
+		public enum BalloonColor { Red, Orange, blue, Green, Purple};
 
-		public Material red, orange, yellow, green, purple, invalid;
+		public Material red, orange, blue, green, purple, invalid;
 
 		public GameObject popPrefab;
 
@@ -27,8 +27,6 @@ public class Balloon : MonoBehaviour
 
 		private bool particlesSpawned = false;
 
-		private static float s_flLastDeathSound = 0f;
-		
 		public AudioSource lifetimeEndSound;
 		public AudioSource pop;
 
@@ -123,8 +121,8 @@ public class Balloon : MonoBehaviour
 					return new Material(red);
 				case BalloonColor.Orange:
 					return new Material(orange);
-				case BalloonColor.Yellow:
-					return new Material(yellow);
+				case BalloonColor.blue:
+					return new Material(blue);
 				case BalloonColor.Green:
 					return new Material(green);
 				case BalloonColor.Purple:
