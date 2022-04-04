@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Reticle : MonoBehaviour
 {
+    public GameObject controllerFacing;
     public Camera cameraFacing;
+    private Vector3 _originalScale;
     
     // ---------------------------------------------------------------------
     void Start()
     {
-        
+        _originalScale = transform.localScale;
     }
 
     // ---------------------------------------------------------------------
@@ -18,19 +20,32 @@ public class Reticle : MonoBehaviour
         
         RaycastHit hit;
         float distance;
-        if(Physics.Raycast (new Ray(cameraFacing.transform.position, cameraFacing.transform.rotation * Vector3.forward),
+        if(Physics.Raycast (new Ray(controllerFacing.transform.position, controllerFacing.transform.rotation * Vector3.forward),
             out hit))
         {
-            distance = hit.distance;
+            distance = hit.distance ;
         }
         else
         {
             distance = cameraFacing.farClipPlane * 0.95f;
         }
         
-        transform.position = cameraFacing.transform.position + cameraFacing.transform.rotation * Vector3.forward * distance;
-        transform.LookAt(cameraFacing.transform.position);
+        transform.position = controllerFacing.transform.position + controllerFacing.transform.rotation * Vector3.forward * distance;
+        transform.LookAt(controllerFacing.transform.position);
         transform.Rotate(0,180,0);
-        transform.localScale = Vector3.one * distance / 10f;
+        if (distance < 300.0f)
+        {
+            distance *= 1 + 5 * Mathf.Exp(-distance);
+            transform.localScale = _originalScale * distance;
+        }
+        else
+        {
+            transform.localScale = _originalScale * 600f;
+        }
+        
+        
+        //transform.localScale = _originalScale * distance;
+        
+        Debug.Log(distance);
     }
 }
