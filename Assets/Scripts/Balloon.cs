@@ -76,6 +76,7 @@ public class Balloon : MonoBehaviour
 			if ( particlePrefab != null )
 			{
 				GameObject particleObject = Instantiate( particlePrefab, transform.position, transform.rotation ) as GameObject;
+				particleObject.transform.localScale = (this.transform.localScale/35)/2;
 				particleObject.GetComponent<ParticleSystem>().Play();
 				Destroy( particleObject, 2f );
 			}
@@ -99,7 +100,7 @@ public class Balloon : MonoBehaviour
 		void OnCollisionEnter( Collision collision )
 		{
 			print("Balloon hit the platform, destroying balloon");
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
 
 		public void HitBalloon()
@@ -135,7 +136,8 @@ public class Balloon : MonoBehaviour
 			return new Material(invalid);
 		}
 
-		public bool CheckColor(int crosshairIndex)
+		/* //Old colour matching code
+		 public bool CheckColor(int crosshairIndex)
 		{
 			if (crosshairIndex == colorIndex)
 			{
@@ -146,5 +148,6 @@ public class Balloon : MonoBehaviour
 				return false;
 			}
 		}
+		*/
 	}
 

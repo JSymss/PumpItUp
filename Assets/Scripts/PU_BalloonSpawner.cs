@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalloonSpawner : MonoBehaviour
+public class PU_BalloonSpawner : MonoBehaviour
 {
     public float minSpawnTime = 5f;
     public float maxSpawnTime = 15f;
@@ -34,8 +34,8 @@ public class BalloonSpawner : MonoBehaviour
     {
         if ( ( Time.time > nextSpawnTime ) && autoSpawn )
         {
-            scale = Random.Range(minScale, maxScale);
             SpawnBalloon();
+            scale = Random.Range(minScale, maxScale);
             nextSpawnTime = Random.Range( minSpawnTime, maxSpawnTime ) + Time.time;
         }
     }

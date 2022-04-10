@@ -8,24 +8,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject primaryController, secondaryController;
+    public GameObject primaryController, secondaryController, centerEye;
     public GameObject goalBalloon;
     public GameObject explosion;
-    public AudioSource sfxShoot;
+    public GameObject powerUpLaserPrimary, powerUpLaserSecondary;
+    public AudioSource sfxShoot, sfxLaser;
 
-    private float goalBalloonScale = 1f;
-    
-    
-    public delegate void HitCorrectBalloon();
-
-    public static event HitCorrectBalloon OnHit;
+    private float _goalBalloonScale = 1f;
+    private bool _pu_laserActive = false;
 
     private void Awake()
     {
-        goalBalloonScale = goalBalloon.transform.localScale.x;
-        
-       
-
+        _goalBalloonScale = goalBalloon.transform.localScale.x;
+        powerUpLaserPrimary.SetActive(false);
+        powerUpLaserSecondary.SetActive(false);
     }
  void Update()
     {
@@ -46,63 +42,111 @@ public class PlayerController : MonoBehaviour
                     Shoot(secondaryController);
                 }
             }
-       }
+        }
+
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Shoot(centerEye);
+            }
+        }
+
+        if (_pu_laserActive)
+        {
+            Shoot(primaryController);
+            Shoot(secondaryController);
+        }
     }
  
     void Shoot(GameObject controller)
          {
-             sfxShoot.Play();
+             if (!_pu_laserActive)
+             {
+                 sfxShoot.Play();
+             }
+             
              
              RaycastHit hit;
-             if (Physics.Raycast(controller.transform.position, controller.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+             if (Physics.Raycast(controller.transform.position,
+                 controller.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
              {
-                 Debug.DrawRay(controller.transform.position, controller.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                 Debug.DrawRay(controller.transform.position,
+                     controller.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                  Debug.Log("Did Hit");
-     
+
                  if (hit.collider.gameObject.GetComponent<Balloon>() != null)
                  {
+                     // Hit regular balloon
+
                      var balloon = hit.collider.gameObject.GetComponent<Balloon>();
-                     if (balloon.CheckColor(GameManager.ColorIndex))
-                     {
-                         balloon.HitBalloon();
-                         OnCorrectBalloonHit();
-                     }
-                     else
-                     {
-                         //balloon.HitBalloon();
-                         //OnIncorrectBalloonHit();
-                         print("Wrong Balloon!");
-                     }
-                         
+                     balloon.HitBalloon();
+                     OnCorrectBalloonHit();
+
                  }
-             }
-             else
-             {
-                 Debug.DrawRay(controller.transform.position, controller.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-                 Debug.Log("Did not Hit");
+                 if (hit.collider.gameObject.GetComponent<PU_LaserBalloon>() != null)
+                 {
+                     //Hit laser power up balloon
+                     
+                     var balloon = hit.collider.gameObject.GetComponent<PU_LaserBalloon>();
+                     print("Hit Laser Balloon");
+                     balloon.HitBalloon();
+                     OnCorrectBalloonHit();
+
+                     // Need this to help with overlapping, make sure it doesn't interfere with coroutines in the future.
+                     StopAllCoroutines();
+
+                     StartCoroutine(PowerUpLaser());
+                 }
+
+                 if (hit.collider.gameObject.GetComponent<PU_MultiBalloon>() != null)
+                 {
+                     //Hit laser power up balloon
+
+                     var balloon = hit.collider.gameObject.GetComponent<PU_MultiBalloon>();
+                     print("Hit Multi Balloon");
+                     balloon.HitBalloon();
+                     OnCorrectBalloonHit();
+                 }
+
+                 /*else
+                 {
+                     Debug.DrawRay(controller.transform.position,
+                         controller.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+                     Debug.Log("Did not Hit");
+                 }*/
              }
          }
+
+    IEnumerator PowerUpLaser()
+    {
+        _pu_laserActive = true;
+        powerUpLaserPrimary.SetActive(true);
+        powerUpLaserSecondary.SetActive(true);
+        sfxLaser.Play();
+        
+        yield return new WaitForSeconds(5f);
+        
+        _pu_laserActive = false;
+        powerUpLaserPrimary.SetActive(false);
+        powerUpLaserSecondary.SetActive(false);
+        sfxLaser.Stop();
+    }
     public void OnCorrectBalloonHit()
     {
         if (goalBalloon != null)
         {
-            goalBalloonScale += 1f;
-            goalBalloon.transform.localScale = new Vector3(goalBalloonScale, goalBalloonScale, goalBalloonScale);
+            _goalBalloonScale += 1f;
+            goalBalloon.transform.localScale = new Vector3(_goalBalloonScale, _goalBalloonScale, _goalBalloonScale);
             print("Increasing size");
 
             // When the player has achieved the goal size, create the final explosion
             if (goalBalloon.transform.localScale.x > 115)
             {
+                // In the future, we can add more interactivity here. Example: player is alerted the big balloon is thin, and they should try shooting it to blow it up.
                 GameObject effect = Instantiate(explosion, goalBalloon.transform.position, Quaternion.identity) as GameObject;
                 Destroy(goalBalloon);
             }
-        }
-    }
-
-    public void OnIncorrectBalloonHit()
-    {
-        if (goalBalloon != null)
-        {
         }
     }
 }
