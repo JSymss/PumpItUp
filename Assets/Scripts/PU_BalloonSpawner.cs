@@ -41,13 +41,25 @@ public class PU_BalloonSpawner : MonoBehaviour
     }
     public GameObject SpawnBalloon()
     {
-        GameObject balloonPrefab = balloons[Random.Range(0, balloons.Length)];
-
+        int i = Random.Range(0, 100);
+        int j;
+        if (i > 50)
+        {
+            j = 1;
+        }
+        else
+        {
+            j = Random.Range(0, balloons.Length);
+        }
+       
+        GameObject balloonPrefab = balloons[j];
+     
         Vector3 randomPos = Random.insideUnitSphere * radius;
         randomPos.y = ySpawnOffset;
 
         GameObject balloon = Instantiate( balloonPrefab, randomPos, balloonPrefab.transform.rotation ) as GameObject;
         balloon.transform.localScale = new Vector3( scale, (scale), scale );
+        BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Add(balloon);
         
         if ( spawnDirectionTransform != null )
         {

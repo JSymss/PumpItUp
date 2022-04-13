@@ -13,15 +13,24 @@ public class PlayerController : MonoBehaviour
     public GameObject explosion;
     public GameObject powerUpLaserPrimary, powerUpLaserSecondary;
     public AudioSource sfxShoot, sfxLaser;
+    public GameObject editorCrosshair;
 
-    private float _goalBalloonScale = 1f;
+    public IEnumerator powerUpLaserCoroutine, freezeCoroutine;
+
+    private float _goalBalloonCurrentScale = 1f;
+    public float goalBalloonTargetScale = 200f;
     private bool _pu_laserActive = false;
 
     private void Awake()
     {
-        _goalBalloonScale = goalBalloon.transform.localScale.x;
+        _goalBalloonCurrentScale = goalBalloon.transform.localScale.x;
         powerUpLaserPrimary.SetActive(false);
         powerUpLaserSecondary.SetActive(false);
+
+        if (!Application.isEditor)
+        {
+            editorCrosshair.gameObject.SetActive(false);
+        }
     }
  void Update()
     {
@@ -77,36 +86,21 @@ public class PlayerController : MonoBehaviour
 
                  if (hit.collider.gameObject.GetComponent<Balloon>() != null)
                  {
-                     // Hit regular balloon
-
-                     var balloon = hit.collider.gameObject.GetComponent<Balloon>();
-                     balloon.HitBalloon();
-                     OnCorrectBalloonHit();
-
+                     RegularBalloonHit(hit);
                  }
                  if (hit.collider.gameObject.GetComponent<PU_LaserBalloon>() != null)
                  {
-                     //Hit laser power up balloon
-                     
-                     var balloon = hit.collider.gameObject.GetComponent<PU_LaserBalloon>();
-                     print("Hit Laser Balloon");
-                     balloon.HitBalloon();
-                     OnCorrectBalloonHit();
-
-                     // Need this to help with overlapping, make sure it doesn't interfere with coroutines in the future.
-                     StopAllCoroutines();
-
-                     StartCoroutine(PowerUpLaser());
+                     LaserBalloonHit(hit);
                  }
 
                  if (hit.collider.gameObject.GetComponent<PU_MultiBalloon>() != null)
                  {
-                     //Hit laser power up balloon
+                     MultiBalloonHit(hit);
+                 }
 
-                     var balloon = hit.collider.gameObject.GetComponent<PU_MultiBalloon>();
-                     print("Hit Multi Balloon");
-                     balloon.HitBalloon();
-                     OnCorrectBalloonHit();
+                 if (hit.collider.gameObject.GetComponent<PU_FreezeBalloon>() != null)
+                 {
+                     FreezeBalloonHit(hit);
                  }
 
                  /*else
@@ -118,6 +112,102 @@ public class PlayerController : MonoBehaviour
              }
          }
 
+    void RegularBalloonHit(RaycastHit hit)
+    {
+        // Hit regular balloon
+
+        var balloon = hit.collider.gameObject.GetComponent<Balloon>();
+        balloon.HitBalloon();
+        OnCorrectBalloonHit();
+    }
+
+    void LaserBalloonHit(RaycastHit hit)
+    {
+        //Hit laser power up balloon
+                     
+        var balloon = hit.collider.gameObject.GetComponent<PU_LaserBalloon>();
+        print("Hit Laser Balloon");
+        balloon.HitBalloon();
+        OnCorrectBalloonHit();
+
+        // Need this to help with overlapping, make sure it doesn't interfere with coroutines in the future.
+
+        if (powerUpLaserCoroutine != null)
+        {
+            StopCoroutine(powerUpLaserCoroutine);
+        }
+        
+        powerUpLaserCoroutine = PowerUpLaser();
+        StartCoroutine(PowerUpLaser());
+    }
+
+    void MultiBalloonHit(RaycastHit hit)
+    {
+        //Hit multi balloon
+
+        var balloon = hit.collider.gameObject.GetComponent<PU_MultiBalloon>();
+        print("Hit Multi Balloon");
+        balloon.HitBalloon();
+        OnCorrectBalloonHit();
+    }
+
+    void FreezeBalloonHit(RaycastHit hit)
+    {
+        // hit freeze balloon
+        
+        var balloon = hit.collider.gameObject.GetComponent<PU_FreezeBalloon>();
+        print("Hit Freeze Balloon");
+        balloon.HitBalloon();
+        OnCorrectBalloonHit();
+        
+        foreach (var balloons in BalloonSpawner.balloonSpawnerInstance.spawnedBalloons)
+        {
+            if (balloons != null)
+            {
+                freezeCoroutine = FreezeBalloons(balloons);
+                StartCoroutine(freezeCoroutine);
+            }
+        }
+    }
+
+    IEnumerator FreezeBalloons(GameObject balloon)
+    {
+        if (balloon != null)
+        {
+            if (balloon.GetComponent<Rigidbody>() == null)
+            {
+                if (balloon.transform.GetComponentInChildren<Rigidbody>())
+                {
+                    balloon.transform.GetComponentInChildren<Rigidbody>().isKinematic = true;
+                }
+            }
+            else
+            {
+                balloon.GetComponent<Rigidbody>().isKinematic = true;
+            }
+            Debug.Log("Freezing");
+        }
+
+        yield return new WaitForSeconds(3f);
+        
+        if(balloon!=null)
+        {
+            if (balloon.GetComponent<Rigidbody>() == null)
+            {
+                if (balloon.transform.GetComponentInChildren<Rigidbody>())
+                {
+                    balloon.transform.GetComponentInChildren<Rigidbody>().isKinematic = false;
+                }
+            }
+            else
+            {
+                balloon.GetComponent<Rigidbody>().isKinematic = false;
+            }
+            Debug.Log("Unfreezing");
+            freezeCoroutine = null;
+        }
+    }
+    
     IEnumerator PowerUpLaser()
     {
         _pu_laserActive = true;
@@ -131,17 +221,18 @@ public class PlayerController : MonoBehaviour
         powerUpLaserPrimary.SetActive(false);
         powerUpLaserSecondary.SetActive(false);
         sfxLaser.Stop();
+        powerUpLaserCoroutine = null;
     }
     public void OnCorrectBalloonHit()
     {
         if (goalBalloon != null)
         {
-            _goalBalloonScale += 1f;
-            goalBalloon.transform.localScale = new Vector3(_goalBalloonScale, _goalBalloonScale, _goalBalloonScale);
+            _goalBalloonCurrentScale += 1f;
+            goalBalloon.transform.localScale = new Vector3(_goalBalloonCurrentScale, _goalBalloonCurrentScale, _goalBalloonCurrentScale);
             print("Increasing size");
 
             // When the player has achieved the goal size, create the final explosion
-            if (goalBalloon.transform.localScale.x > 115)
+            if (goalBalloon.transform.localScale.x > goalBalloonTargetScale)
             {
                 // In the future, we can add more interactivity here. Example: player is alerted the big balloon is thin, and they should try shooting it to blow it up.
                 GameObject effect = Instantiate(explosion, goalBalloon.transform.position, Quaternion.identity) as GameObject;

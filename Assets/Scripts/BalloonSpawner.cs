@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.Newtonsoft.Json.Utilities;
+using Random = UnityEngine.Random;
 
 public class BalloonSpawner : MonoBehaviour
 {
@@ -20,9 +23,27 @@ public class BalloonSpawner : MonoBehaviour
     public float ySpawnOffset = -25f;
 
     public Transform spawnDirectionTransform;
+    
+    public List<GameObject> spawnedBalloons;
+
+    public static BalloonSpawner balloonSpawnerInstance;
+
+    private void Awake()
+    {
+        if (balloonSpawnerInstance == null)
+        {
+            balloonSpawnerInstance = this;
+        }
+        else if(balloonSpawnerInstance!=this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
+        spawnedBalloons = new List<GameObject>();
+        
         if ( autoSpawn && spawnAtStartup )
         {
             SpawnBalloon();
@@ -48,6 +69,7 @@ public class BalloonSpawner : MonoBehaviour
 
         GameObject balloon = Instantiate( balloonPrefab, randomPos, balloonPrefab.transform.rotation ) as GameObject;
         balloon.transform.localScale = new Vector3( scale, (scale), scale );
+        spawnedBalloons.Add(balloon);
         
         if ( spawnDirectionTransform != null )
         {
@@ -55,5 +77,21 @@ public class BalloonSpawner : MonoBehaviour
         }
 
         return balloon;
+    }
+
+    void FreezeBalloons()
+    {
+        foreach (var balloon in spawnedBalloons)
+        {
+            balloon.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+
+    void UnFreezeBalloons()
+    {
+        foreach (var balloon in spawnedBalloons)
+        {
+            balloon.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 }

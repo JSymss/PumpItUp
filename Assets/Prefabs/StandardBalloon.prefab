@@ -144,7 +144,7 @@ MonoBehaviour:
   popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
     type: 3}
   maxVelocity: 5
-  lifetime: 15
+  lifetime: 25
   burstOnLifetimeEnd: 0
   lifetimeEndParticlePrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
     type: 3}

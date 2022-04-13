@@ -9,7 +9,7 @@ public class PU_MultiBalloon : MonoBehaviour
 
 	public float maxVelocity = 5f;
 	public float radius = 2f;
-	public float lifetime = 15f;
+	public float lifetime = 25f;
 	public float scale;
 	public float minScale = 500f, maxScale = 1000f, explosionForce = 100f;
 	public int numberOfMultiBalloonsSpawned;
@@ -51,7 +51,7 @@ public class PU_MultiBalloon : MonoBehaviour
 			{
 				SpawnParticles( lifetimeEndParticlePrefab, lifetimeEndSound );
 			}
-
+			BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 			Destroy( gameObject );
 		}
 	}
@@ -93,7 +93,7 @@ public class PU_MultiBalloon : MonoBehaviour
 	void OnCollisionEnter( Collision collision )
 	{
 		print("Balloon hit the platform, destroying balloon");
-		Destroy(gameObject);
+		//Destroy(gameObject);
 	}
 
 	public void HitBalloon()
@@ -111,13 +111,14 @@ public class PU_MultiBalloon : MonoBehaviour
 			GameObject balloon = Instantiate( balloonPrefab, transform.position, balloonPrefab.transform.rotation ) as GameObject;
             scale = Random.Range(minScale, maxScale);
             balloon.transform.localScale = new Vector3( scale, (scale), scale );
+            BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Add(balloon.gameObject);
             
             // Currently the rigidbodies are repelling each other, creating the explosion effect naturally. To get more control out of this,
             // I would like to figure out how to spawn them without them overlapping each other and apply force manually with the function shown below
             
             //balloon.GetComponent<Rigidbody>().AddExplosionForce(explosionForce,transform.position,10f,1f);
 		}
-		
+		BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 		Destroy(gameObject);
 	}
 	

@@ -1321,6 +1321,8 @@ MonoBehaviour:
   powerUpLaserSecondary: {fileID: 497534290}
   sfxShoot: {fileID: 1918814626}
   sfxLaser: {fileID: 636503201}
+  editorCrosshair: {fileID: 1282707843}
+  goalBalloonTargetScale: 200
 --- !u!1 &1676988087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,8 +1562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2e288f51f40e7478eeaaebbb6fa446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnTime: 0.15
-  maxSpawnTime: 0.3
+  minSpawnTime: 0.5
+  maxSpawnTime: 1
   radius: 100
   balloons:
   - {fileID: 4939680340568953667, guid: c84b706559b3bae43aef9b78293957d7, type: 3}
@@ -1576,6 +1578,7 @@ MonoBehaviour:
   spawnForce: 3
   ySpawnOffset: -25
   spawnDirectionTransform: {fileID: 0}
+  spawnedBalloons: []
 --- !u!4 &1738288812
 Transform:
   m_ObjectHideFlags: 0
@@ -1693,7 +1696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810216848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55047226, y: 0.48661172, z: 2.1150503}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676988090}
@@ -1713,10 +1716,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnTime: 1
   maxSpawnTime: 3
-  radius: 500
+  radius: 100
   balloons:
-  - {fileID: 8503135237174379042, guid: c05ae0059a9f2814bb8039605324e16d, type: 3}
-  - {fileID: 387148281916739022, guid: 632be68313eed2d4885cdddb58b1ee27, type: 3}
+  - {fileID: 1017338394963161370, guid: 37bc5a758aa97284d9f9d6188d2ce45c, type: 3}
+  - {fileID: 825283447822334663, guid: 95191374de64dc6448b1c08e894b4604, type: 3}
+  - {fileID: 7133620299497666986, guid: 469400f9f3a4ee348986f015d2e9f728, type: 3}
   autoSpawn: 1
   spawnAtStartup: 1
   minScale: 15

@@ -11,7 +11,7 @@ public class Balloon : MonoBehaviour
 
 		public float maxVelocity = 5f;
 
-		public float lifetime = 15f;
+		public float lifetime = 25f;
 		public bool burstOnLifetimeEnd = false;
 
 		public GameObject lifetimeEndParticlePrefab;
@@ -58,7 +58,7 @@ public class Balloon : MonoBehaviour
 				{
 					SpawnParticles( lifetimeEndParticlePrefab, lifetimeEndSound );
 				}
-
+				BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 				Destroy( gameObject );
 			}
 		}
@@ -107,6 +107,7 @@ public class Balloon : MonoBehaviour
 		{
 			print("You hit the balloon!");
 			SpawnParticles(popPrefab,SoundManager.instance.pop);
+			BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 			Destroy(gameObject);
 		}
 		public void SetColor( BalloonColor color )

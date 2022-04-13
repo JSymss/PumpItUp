@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PU_LaserBalloon : MonoBehaviour
+public class PU_FreezeBalloon : MonoBehaviour
 {
-	public GameObject popPrefab;
+    public GameObject popPrefab;
 
 	public float maxVelocity = 5f;
 
@@ -99,5 +99,4 @@ public class PU_LaserBalloon : MonoBehaviour
 		BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 		Destroy(gameObject);
 	}
-	
 }
