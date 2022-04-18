@@ -3,27 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="243053c2-997a-463e-8626-705be0c0fb6e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PumpItUp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PumpItUp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Copy of HeartBalloon1.1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Copy of HeartBalloon1.1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Copy of RingBalloon1.1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Copy of RingBalloon1.1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Copy of StarBalloon1.1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Copy of StarBalloon1.1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Copy of StndBalloon1.1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Copy of StndBalloon1.1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Copy of Xballoon1.1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Copy of Xballoon1.1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/piggy_ballon.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/piggy_ballon.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HeartBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HeartBalloon.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PU_LaserBalloon.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PU_LaserBalloon.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PU_MultiBalloon.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PU_MultiBalloon.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RingBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RingBalloon.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/StandardBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/StandardBalloon.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/StarBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/StarBalloon.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XBalloon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XBalloon.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Balloon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Balloon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BalloonSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BalloonSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PU_BalloonSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PU_BalloonSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PU_LaserBalloon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PU_LaserBalloon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PU_MultiBalloon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PU_MultiBalloon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +103,7 @@
       <workItem from="1649058678078" duration="5588000" />
       <workItem from="1649558124044" duration="13876000" />
       <workItem from="1649688737859" duration="11255000" />
+      <workItem from="1650272018336" duration="2940000" />
     </task>
     <servers />
   </component>

@@ -43,7 +43,7 @@ public class PU_BalloonSpawner : MonoBehaviour
     {
         int i = Random.Range(0, 100);
         int j;
-        if (i > 50)
+        if (i > 75)
         {
             j = 1;
         }

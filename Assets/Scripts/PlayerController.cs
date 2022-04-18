@@ -102,6 +102,10 @@ public class PlayerController : MonoBehaviour
                  {
                      FreezeBalloonHit(hit);
                  }
+                 if (hit.collider.gameObject.GetComponent<PU_NumberBalloon>() != null)
+                 {
+                     NumberBalloonHit(hit);
+                 }
 
                  /*else
                  {
@@ -121,6 +125,14 @@ public class PlayerController : MonoBehaviour
         OnCorrectBalloonHit();
     }
 
+    void NumberBalloonHit(RaycastHit hit)
+    {
+        // Hit number balloon
+        
+        var balloon = hit.collider.gameObject.GetComponent<PU_NumberBalloon>();
+        balloon.HitBalloon();
+        OnCorrectBalloonHit();
+    }
     void LaserBalloonHit(RaycastHit hit)
     {
         //Hit laser power up balloon

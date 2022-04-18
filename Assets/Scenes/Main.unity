@@ -1721,6 +1721,7 @@ MonoBehaviour:
   - {fileID: 1017338394963161370, guid: 37bc5a758aa97284d9f9d6188d2ce45c, type: 3}
   - {fileID: 825283447822334663, guid: 95191374de64dc6448b1c08e894b4604, type: 3}
   - {fileID: 7133620299497666986, guid: 469400f9f3a4ee348986f015d2e9f728, type: 3}
+  - {fileID: 7162354434274149699, guid: 0e3239cd479101e41a34e264cbd02197, type: 3}
   autoSpawn: 1
   spawnAtStartup: 1
   minScale: 15
