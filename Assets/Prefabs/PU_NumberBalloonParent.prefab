@@ -11,10 +11,6 @@ GameObject:
   - component: {fileID: 624336419741163627}
   - component: {fileID: 5125231524399635315}
   - component: {fileID: 7727637033977360452}
-  - component: {fileID: 5759115392496108706}
-  - component: {fileID: 3293572791028041570}
-  - component: {fileID: 8627018827733228459}
-  - component: {fileID: 9001858378449910568}
   m_Layer: 0
   m_Name: ThreeBalloon
   m_TagString: Untagged
@@ -81,77 +77,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5759115392496108706
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154337898911649017}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 7334270578504219148, guid: 9890753b7ae372748b20e45cdfd5b2f9, type: 3}
---- !u!54 &3293572791028041570
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154337898911649017}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!75 &8627018827733228459
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154337898911649017}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 50, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 5, y: 1, z: 1}
---- !u!114 &9001858378449910568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154337898911649017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0ba523981a14e43903078b8490dcdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
-    type: 3}
-  maxVelocity: 5
-  lifetime: 25
-  burstOnLifetimeEnd: 0
-  lifetimeEndParticlePrefab: {fileID: 0}
-  minVol: 0.25
-  maxVol: 0.75
-  lifetimeEndSound: {fileID: 0}
-  pop: {fileID: 0}
-  speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
-  maxSpeed: 100
-  numberOne: {fileID: 4781926934604440803}
-  numberTwo: {fileID: 6163781065593684850}
-  numberThree: {fileID: 2154337898911649017}
-  numberFour: {fileID: 7528422626093511386}
 --- !u!1 &4781926934604440803
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,10 +88,6 @@ GameObject:
   - component: {fileID: 666479085635841305}
   - component: {fileID: 6448194790805093967}
   - component: {fileID: 8919157701258656040}
-  - component: {fileID: 5926896950853585182}
-  - component: {fileID: 3299291465236669427}
-  - component: {fileID: 2734897428055478945}
-  - component: {fileID: 7408319262668628815}
   m_Layer: 0
   m_Name: OneBalloon
   m_TagString: Untagged
@@ -233,77 +154,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5926896950853585182
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4781926934604440803}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -3882611372106342973, guid: 6e8b42693df52cd44a20b5d6f3ab9174, type: 3}
---- !u!54 &3299291465236669427
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4781926934604440803}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!75 &2734897428055478945
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4781926934604440803}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 50, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 5, y: 1, z: 1}
---- !u!114 &7408319262668628815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4781926934604440803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0ba523981a14e43903078b8490dcdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
-    type: 3}
-  maxVelocity: 5
-  lifetime: 25
-  burstOnLifetimeEnd: 0
-  lifetimeEndParticlePrefab: {fileID: 0}
-  minVol: 0.25
-  maxVol: 0.75
-  lifetimeEndSound: {fileID: 0}
-  pop: {fileID: 0}
-  speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
-  maxSpeed: 100
-  numberOne: {fileID: 4781926934604440803}
-  numberTwo: {fileID: 6163781065593684850}
-  numberThree: {fileID: 2154337898911649017}
-  numberFour: {fileID: 7528422626093511386}
 --- !u!1 &6163781065593684850
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,10 +165,6 @@ GameObject:
   - component: {fileID: 5490202135491791186}
   - component: {fileID: 8911228857985982842}
   - component: {fileID: 355005546323946687}
-  - component: {fileID: 8844291862693379979}
-  - component: {fileID: 6947433438799330817}
-  - component: {fileID: 6883517402437017031}
-  - component: {fileID: 6363252069114085620}
   m_Layer: 0
   m_Name: TwoBalloon
   m_TagString: Untagged
@@ -385,77 +231,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8844291862693379979
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6163781065593684850}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4315614857224594244, guid: a20635731dbf54f4b90c6fc11b50d491, type: 3}
---- !u!54 &6947433438799330817
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6163781065593684850}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!75 &6883517402437017031
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6163781065593684850}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 50, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 5, y: 1, z: 1}
---- !u!114 &6363252069114085620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6163781065593684850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0ba523981a14e43903078b8490dcdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
-    type: 3}
-  maxVelocity: 5
-  lifetime: 25
-  burstOnLifetimeEnd: 0
-  lifetimeEndParticlePrefab: {fileID: 0}
-  minVol: 0.25
-  maxVol: 0.75
-  lifetimeEndSound: {fileID: 0}
-  pop: {fileID: 0}
-  speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
-  maxSpeed: 100
-  numberOne: {fileID: 4781926934604440803}
-  numberTwo: {fileID: 6163781065593684850}
-  numberThree: {fileID: 2154337898911649017}
-  numberFour: {fileID: 7528422626093511386}
 --- !u!1 &7162354434274149699
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +240,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 257700782507257129}
+  - component: {fileID: 1736047537677735973}
+  - component: {fileID: 5793229013623760107}
+  - component: {fileID: 3946674398020889017}
+  - component: {fileID: 2254499712600475701}
   m_Layer: 0
   m_Name: PU_NumberBalloonParent
   m_TagString: Untagged
@@ -490,6 +269,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1736047537677735973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162354434274149699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0ba523981a14e43903078b8490dcdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
+    type: 3}
+  maxVelocity: 5
+  lifetime: 25
+  burstOnLifetimeEnd: 0
+  lifetimeEndParticlePrefab: {fileID: 0}
+  minVol: 0.25
+  maxVol: 0.75
+  lifetimeEndSound: {fileID: 0}
+  pop: {fileID: 0}
+  speed: {x: 0, y: 10, z: 0}
+  minSpeed: 20
+  maxSpeed: 100
+  numberOne: {fileID: 4781926934604440803}
+  numberTwo: {fileID: 6163781065593684850}
+  numberThree: {fileID: 2154337898911649017}
+  numberFour: {fileID: 7528422626093511386}
+--- !u!54 &5793229013623760107
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162354434274149699}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!75 &3946674398020889017
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162354434274149699}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 50, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 5, y: 1, z: 1}
+--- !u!65 &2254499712600475701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162354434274149699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20472097, y: 0.80506194, z: 0.5400846}
+  m_Center: {x: -0.0014150143, y: -0.019892871, z: -0.01939404}
 --- !u!1 &7528422626093511386
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,10 +350,6 @@ GameObject:
   - component: {fileID: 3430892130044406998}
   - component: {fileID: 5411522629509884787}
   - component: {fileID: 3596602807300613509}
-  - component: {fileID: 1221602017615517390}
-  - component: {fileID: 8094028755881748614}
-  - component: {fileID: 5539576054059438502}
-  - component: {fileID: 5937577786020017563}
   m_Layer: 0
   m_Name: FourBalloon
   m_TagString: Untagged
@@ -571,74 +416,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1221602017615517390
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528422626093511386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 6290431648208581162, guid: 205af4717fcc7274e98bd33f8ca0628b, type: 3}
---- !u!54 &8094028755881748614
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528422626093511386}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!75 &5539576054059438502
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528422626093511386}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 50, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 5, y: 1, z: 1}
---- !u!114 &5937577786020017563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528422626093511386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0ba523981a14e43903078b8490dcdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
-    type: 3}
-  maxVelocity: 5
-  lifetime: 25
-  burstOnLifetimeEnd: 0
-  lifetimeEndParticlePrefab: {fileID: 0}
-  minVol: 0.25
-  maxVol: 0.75
-  lifetimeEndSound: {fileID: 0}
-  pop: {fileID: 0}
-  speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
-  maxSpeed: 100
-  numberOne: {fileID: 4781926934604440803}
-  numberTwo: {fileID: 6163781065593684850}
-  numberThree: {fileID: 2154337898911649017}
-  numberFour: {fileID: 7528422626093511386}

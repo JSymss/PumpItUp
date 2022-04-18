@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float _goalBalloonCurrentScale = 1f;
     public float goalBalloonTargetScale = 200f;
     private bool _pu_laserActive = false;
+    private bool _pu_rocketActive = false;
 
     private void Awake()
     {
@@ -31,42 +32,52 @@ public class PlayerController : MonoBehaviour
         {
             editorCrosshair.gameObject.SetActive(false);
         }
-    }
- void Update()
-    {
-        if (!Application.isEditor)
+    } 
+    void Update()
         {
-            var device = VRDevice.Device;
-            var rightHand = device.PrimaryInputDevice;
-            var leftHand = device.SecondaryInputDevice;
-        
-            if (device != null)
+            if (!Application.isEditor)
             {
-                if(rightHand.GetButtonDown(VRButton.Trigger))
+                var device = VRDevice.Device;
+                var rightHand = device.PrimaryInputDevice;
+                var leftHand = device.SecondaryInputDevice;
+            
+                if (device != null)
                 {
-                    Shoot(primaryController);
+                    if(rightHand.GetButtonDown(VRButton.Trigger))
+                    {
+                        Shoot(primaryController);
+                    }
+                    if(leftHand.GetButtonDown(VRButton.Trigger))
+                    {
+                        Shoot(secondaryController);
+                    }
                 }
-                if(leftHand.GetButtonDown(VRButton.Trigger))
+            }
+
+            if (Application.isEditor)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    Shoot(secondaryController);
+                    Shoot(centerEye);
                 }
+            }
+
+            if (_pu_laserActive)
+            {
+                Shoot(primaryController);
+                Shoot(secondaryController);
+            }
+
+            if (_pu_rocketActive)
+            {
+                
             }
         }
 
-        if (Application.isEditor)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Shoot(centerEye);
-            }
-        }
-
-        if (_pu_laserActive)
-        {
-            Shoot(primaryController);
-            Shoot(secondaryController);
-        }
-    }
+     void ShootRocket()
+     {
+         
+     }
  
     void Shoot(GameObject controller)
          {
@@ -106,6 +117,10 @@ public class PlayerController : MonoBehaviour
                  {
                      NumberBalloonHit(hit);
                  }
+                 if (hit.collider.gameObject.GetComponent<PU_RocketBalloon>() != null)
+                 {
+                     RocketBalloonHit(hit);
+                 }
 
                  /*else
                  {
@@ -125,6 +140,16 @@ public class PlayerController : MonoBehaviour
         OnCorrectBalloonHit();
     }
 
+    void RocketBalloonHit(RaycastHit hit)
+    {
+        // Hit rocket balloon
+
+        var balloon = hit.collider.gameObject.GetComponent<PU_RocketBalloon>();
+        balloon.HitBalloon();
+        OnCorrectBalloonHit();
+        
+        _pu_rocketActive = true;
+    }
     void NumberBalloonHit(RaycastHit hit)
     {
         // Hit number balloon

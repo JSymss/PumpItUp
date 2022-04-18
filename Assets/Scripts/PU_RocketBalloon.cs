@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PU_NumberBalloon : MonoBehaviour
+public class PU_RocketBalloon : MonoBehaviour
 {
     public GameObject popPrefab;
 
-    public float maxVelocity = 5f;
+	public float maxVelocity = 5f;
+
 	public float lifetime = 25f;
 	public bool burstOnLifetimeEnd = false;
 
 	public GameObject lifetimeEndParticlePrefab;
 
 	private float destructTime = 0f;
+
 	private float lastSoundTime = 0f;
 	private float soundDelay = 0.2f;
-	
 	public float minVol = 0.25f;
 	public float maxVol = 0.75f;
 
@@ -30,17 +31,8 @@ public class PU_NumberBalloon : MonoBehaviour
 	public float minSpeed = 10f;
 	public float maxSpeed = 20f;
 
-	private int timesHit = 0;
-
-	public GameObject numberOne, numberTwo, numberThree, numberFour;
-
 	void Start()
 	{
-		numberOne.SetActive(true);
-		numberTwo.SetActive(false);
-		numberThree.SetActive(false);
-		numberFour.SetActive(false);
-		
 		destructTime = Time.time + lifetime + Random.value;
 		balloonRigidbody = GetComponent<Rigidbody>();
 		speed = new Vector3(Random.Range(minSpeed, maxSpeed)/10, Random.Range(minSpeed, maxSpeed), Random.Range(minSpeed, maxSpeed)/10);
@@ -104,52 +96,7 @@ public class PU_NumberBalloon : MonoBehaviour
 	{
 		print("You hit the balloon!");
 		SpawnParticles(popPrefab,SoundManager.instance.pop);
-
-		timesHit++;
-		print(timesHit);
-		
-		// change mesh here
-		switch (timesHit)
-		{
-			case 1:
-				numberTwo.SetActive(true);
-				numberThree.SetActive(false);
-				numberFour.SetActive(false);
-				numberOne.SetActive(false);
-
-				particlesSpawned = false;
-				
-				print("Case 1");
-				
-				break;
-			case 2:
-				numberThree.SetActive(true);
-				numberOne.SetActive(false);
-				numberFour.SetActive(false);
-				numberTwo.SetActive(false);
-				
-				particlesSpawned = false;
-
-				print("Case 2");
-				break;
-			case 3:
-				numberFour.SetActive(true);
-				numberOne.SetActive(false);
-				numberTwo.SetActive(false);
-				numberThree.SetActive(false);
-				
-				particlesSpawned = false;
-
-				print("Case 3");
-				break;
-			default:
-				print("Case 4");
-				
-				particlesSpawned = false;
-
-				BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
-				Destroy(gameObject);
-				break;
-		}
+		BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
+		Destroy(gameObject);
 	}
 }
