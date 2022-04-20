@@ -97,12 +97,6 @@ public class Balloon : MonoBehaviour
 			}
 		}
 
-		void OnCollisionEnter( Collision collision )
-		{
-			print("Balloon hit the platform, destroying balloon");
-			//Destroy(gameObject);
-		}
-
 		public void HitBalloon()
 		{
 			print("You hit the balloon!");

@@ -1322,6 +1322,8 @@ MonoBehaviour:
   sfxShoot: {fileID: 1918814626}
   sfxLaser: {fileID: 636503201}
   editorCrosshair: {fileID: 1282707843}
+  rocketProjectile: {fileID: 5542130317810954704, guid: 303497c8c6fe618469eb6e2fd99cf864,
+    type: 3}
   goalBalloonTargetScale: 200
 --- !u!1 &1676988087
 GameObject:
@@ -1722,6 +1724,7 @@ MonoBehaviour:
   - {fileID: 825283447822334663, guid: 95191374de64dc6448b1c08e894b4604, type: 3}
   - {fileID: 7133620299497666986, guid: 469400f9f3a4ee348986f015d2e9f728, type: 3}
   - {fileID: 7162354434274149699, guid: ea42ba58a2dd99d4db01a05c9242ea3e, type: 3}
+  - {fileID: 7544044620632971512, guid: e15e34d2751a7f847978fae654d4537b, type: 3}
   autoSpawn: 1
   spawnAtStartup: 1
   minScale: 15

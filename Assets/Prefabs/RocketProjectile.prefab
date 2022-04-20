@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5542130317810954540}
   - component: {fileID: 5542130317810954543}
   - component: {fileID: 5542130317810954542}
-  - component: {fileID: 5542130317810954705}
+  - component: {fileID: 7173059254177710654}
   m_Layer: 0
   m_Name: RocketProjectile
   m_TagString: Untagged
@@ -109,15 +109,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!75 &5542130317810954705
-ConstantForce:
+--- !u!114 &7173059254177710654
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5542130317810954704}
   m_Enabled: 1
-  m_Force: {x: 0, y: 0, z: 5}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb728f4a049adc4ea4a0fc609b40d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  radius: 300
+  explosionPrefab: {fileID: 4974865851498996619, guid: 57ac927100802c240a7c225c2b2380e3,
+    type: 3}

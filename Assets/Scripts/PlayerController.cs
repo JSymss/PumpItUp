@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject powerUpLaserPrimary, powerUpLaserSecondary;
     public AudioSource sfxShoot, sfxLaser;
     public GameObject editorCrosshair;
+    public GameObject rocketProjectile;
 
     public IEnumerator powerUpLaserCoroutine, freezeCoroutine;
 
@@ -45,10 +46,20 @@ public class PlayerController : MonoBehaviour
                 {
                     if(rightHand.GetButtonDown(VRButton.Trigger))
                     {
+                        if (_pu_rocketActive)
+                        {
+                            ShootRocket(primaryController);
+                            return;
+                        }
                         Shoot(primaryController);
                     }
                     if(leftHand.GetButtonDown(VRButton.Trigger))
                     {
+                        if (_pu_rocketActive)
+                        {
+                            ShootRocket(secondaryController);
+                            return;
+                        }
                         Shoot(secondaryController);
                     }
                 }
@@ -58,25 +69,36 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    if (_pu_rocketActive)
+                    {
+                        ShootRocket(centerEye);
+                        return;
+                    }
                     Shoot(centerEye);
                 }
             }
-
+            // if a rocket powerup is hit while the laser powerup is active, cancel the laser powerup.
+            if (_pu_rocketActive)
+            {
+                _pu_laserActive = false;
+                sfxLaser.Stop();
+            }
+            
             if (_pu_laserActive)
             {
                 Shoot(primaryController);
                 Shoot(secondaryController);
             }
-
-            if (_pu_rocketActive)
-            {
-                
-            }
         }
 
-     void ShootRocket()
+     void ShootRocket(GameObject controller)
      {
+         // Play rocket SFX
          
+         GameObject projectile = Instantiate(rocketProjectile, controller.transform.position, controller.transform.rotation);
+         
+         projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*100f);
+         _pu_rocketActive = false;
      }
  
     void Shoot(GameObject controller)
@@ -97,29 +119,29 @@ public class PlayerController : MonoBehaviour
 
                  if (hit.collider.gameObject.GetComponent<Balloon>() != null)
                  {
-                     RegularBalloonHit(hit);
+                     RegularBalloonHit(hit.collider.gameObject);
                  }
                  if (hit.collider.gameObject.GetComponent<PU_LaserBalloon>() != null)
                  {
-                     LaserBalloonHit(hit);
+                     LaserBalloonHit(hit.collider.gameObject);
                  }
 
                  if (hit.collider.gameObject.GetComponent<PU_MultiBalloon>() != null)
                  {
-                     MultiBalloonHit(hit);
+                     MultiBalloonHit(hit.collider.gameObject);
                  }
 
                  if (hit.collider.gameObject.GetComponent<PU_FreezeBalloon>() != null)
                  {
-                     FreezeBalloonHit(hit);
+                     FreezeBalloonHit(hit.collider.gameObject);
                  }
                  if (hit.collider.gameObject.GetComponent<PU_NumberBalloon>() != null)
                  {
-                     NumberBalloonHit(hit);
+                     NumberBalloonHit(hit.collider.gameObject);
                  }
                  if (hit.collider.gameObject.GetComponent<PU_RocketBalloon>() != null)
                  {
-                     RocketBalloonHit(hit);
+                     RocketBalloonHit(hit.collider.gameObject);
                  }
 
                  /*else
@@ -131,38 +153,38 @@ public class PlayerController : MonoBehaviour
              }
          }
 
-    void RegularBalloonHit(RaycastHit hit)
+    public void RegularBalloonHit(GameObject hit)
     {
         // Hit regular balloon
 
-        var balloon = hit.collider.gameObject.GetComponent<Balloon>();
+        var balloon = hit.GetComponent<Balloon>();
         balloon.HitBalloon();
         OnCorrectBalloonHit();
     }
 
-    void RocketBalloonHit(RaycastHit hit)
+    public void RocketBalloonHit(GameObject hit)
     {
         // Hit rocket balloon
 
-        var balloon = hit.collider.gameObject.GetComponent<PU_RocketBalloon>();
+        var balloon = hit.GetComponent<PU_RocketBalloon>();
         balloon.HitBalloon();
         OnCorrectBalloonHit();
         
         _pu_rocketActive = true;
     }
-    void NumberBalloonHit(RaycastHit hit)
+    public void NumberBalloonHit(GameObject hit)
     {
         // Hit number balloon
         
-        var balloon = hit.collider.gameObject.GetComponent<PU_NumberBalloon>();
+        var balloon = hit.GetComponent<PU_NumberBalloon>();
         balloon.HitBalloon();
         OnCorrectBalloonHit();
     }
-    void LaserBalloonHit(RaycastHit hit)
+    public void LaserBalloonHit(GameObject hit)
     {
         //Hit laser power up balloon
                      
-        var balloon = hit.collider.gameObject.GetComponent<PU_LaserBalloon>();
+        var balloon = hit.GetComponent<PU_LaserBalloon>();
         print("Hit Laser Balloon");
         balloon.HitBalloon();
         OnCorrectBalloonHit();
@@ -178,21 +200,21 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(PowerUpLaser());
     }
 
-    void MultiBalloonHit(RaycastHit hit)
+    public void MultiBalloonHit(GameObject hit)
     {
         //Hit multi balloon
 
-        var balloon = hit.collider.gameObject.GetComponent<PU_MultiBalloon>();
+        var balloon = hit.GetComponent<PU_MultiBalloon>();
         print("Hit Multi Balloon");
         balloon.HitBalloon();
         OnCorrectBalloonHit();
     }
 
-    void FreezeBalloonHit(RaycastHit hit)
+    public void FreezeBalloonHit(GameObject hit)
     {
         // hit freeze balloon
         
-        var balloon = hit.collider.gameObject.GetComponent<PU_FreezeBalloon>();
+        var balloon = hit.GetComponent<PU_FreezeBalloon>();
         print("Hit Freeze Balloon");
         balloon.HitBalloon();
         OnCorrectBalloonHit();
@@ -264,7 +286,7 @@ public class PlayerController : MonoBehaviour
     {
         if (goalBalloon != null)
         {
-            _goalBalloonCurrentScale += 1f;
+            _goalBalloonCurrentScale += 0.5f;
             goalBalloon.transform.localScale = new Vector3(_goalBalloonCurrentScale, _goalBalloonCurrentScale, _goalBalloonCurrentScale);
             print("Increasing size");
 
