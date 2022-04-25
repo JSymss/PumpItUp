@@ -3,10 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="243053c2-997a-463e-8626-705be0c0fb6e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PumpItUp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PumpItUp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Explosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Explosion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PU_MultiBalloonParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PU_MultiBalloonParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PU_RocketBalloonParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PU_RocketBalloonParent.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RocketProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RocketProjectile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Balloon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Balloon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RotatingMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RotatingMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RocketProjectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PU_RocketBalloon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GoalProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PU_LaserBalloon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -110,6 +114,9 @@
       <workItem from="1650272018336" duration="2940000" />
       <workItem from="1650299201555" duration="1478000" />
       <workItem from="1650339667615" duration="8738000" />
+      <workItem from="1650855725222" duration="2943000" />
+      <workItem from="1650858786586" duration="3256000" />
+      <workItem from="1650862666792" duration="4519000" />
     </task>
     <servers />
   </component>

@@ -162,11 +162,9 @@ MonoBehaviour:
   popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
     type: 3}
   balloons:
-  - {fileID: 4939680340568953667, guid: c84b706559b3bae43aef9b78293957d7, type: 3}
-  - {fileID: 1178434243537483957, guid: 2b3a6f3326fb1fa4f9bd483f1ee81dd2, type: 3}
-  - {fileID: 6257655316527812284, guid: 372366b01651aa24caf050c0a412b8f4, type: 3}
   - {fileID: 4043870709328100998, guid: b460ea1199ab2cf41b347b207c3ead7d, type: 3}
-  - {fileID: 8574286775369645745, guid: 824deff0946545747aa8936dee105cfb, type: 3}
+  - {fileID: 4939680340568953667, guid: c84b706559b3bae43aef9b78293957d7, type: 3}
+  - {fileID: 6257655316527812284, guid: 372366b01651aa24caf050c0a412b8f4, type: 3}
   maxVelocity: 100
   radius: 10
   lifetime: 25
@@ -205,11 +203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8127217802112853903}
     m_Modifications:
-    - target: {fileID: 387148281916739022, guid: 632be68313eed2d4885cdddb58b1ee27,
-        type: 3}
-      propertyPath: m_Name
-      value: PU_MultiBalloon
-      objectReference: {fileID: 0}
     - target: {fileID: 387148281916739016, guid: 632be68313eed2d4885cdddb58b1ee27,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -280,17 +273,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 20.290709
       objectReference: {fileID: 0}
+    - target: {fileID: 387148281916739022, guid: 632be68313eed2d4885cdddb58b1ee27,
+        type: 3}
+      propertyPath: m_Name
+      value: PU_MultiBalloon
+      objectReference: {fileID: 0}
     - target: {fileID: 387148281916739017, guid: 632be68313eed2d4885cdddb58b1ee27,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -1615863799458454744, guid: 1c310fdebf8410c418fd79ec66a75afc,
-        type: 3}
-    - target: {fileID: 387148281916739018, guid: 632be68313eed2d4885cdddb58b1ee27,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 4481005128293969958, guid: 1c310fdebf8410c418fd79ec66a75afc,
         type: 3}
     - target: {fileID: 387148281916739021, guid: 632be68313eed2d4885cdddb58b1ee27,
         type: 3}
@@ -306,6 +298,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RelativeTorque.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 387148281916739018, guid: 632be68313eed2d4885cdddb58b1ee27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 4481005128293969958, guid: 1c310fdebf8410c418fd79ec66a75afc,
+        type: 3}
+    - target: {fileID: 8546505910742110845, guid: 632be68313eed2d4885cdddb58b1ee27,
+        type: 3}
+      propertyPath: balloons.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8546505910742110845, guid: 632be68313eed2d4885cdddb58b1ee27,
         type: 3}

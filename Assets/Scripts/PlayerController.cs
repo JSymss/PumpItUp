@@ -15,24 +15,35 @@ public class PlayerController : MonoBehaviour
     public AudioSource sfxShoot, sfxLaser;
     public GameObject editorCrosshair;
     public GameObject rocketProjectile;
+    public GameObject standardGunPrimary, standardGunSecondary, rocketLauncherPrimary, rocketLauncherSecondary, laserPowerUpGunPrimary, laserPowerUpGunSecondary;
 
     public IEnumerator powerUpLaserCoroutine, freezeCoroutine;
 
-    private float _goalBalloonCurrentScale = 1f;
-    public float goalBalloonTargetScale = 200f;
+    public static float goalBalloonCurrentScale = 1f;
+    public static float goalBalloonTargetScale = 200f;
     private bool _pu_laserActive = false;
     private bool _pu_rocketActive = false;
 
     private void Awake()
     {
-        _goalBalloonCurrentScale = goalBalloon.transform.localScale.x;
+        goalBalloonCurrentScale = goalBalloon.transform.localScale.x;
         powerUpLaserPrimary.SetActive(false);
         powerUpLaserSecondary.SetActive(false);
+        
+        goalBalloonCurrentScale = 13f;
+        goalBalloonTargetScale = 200f;
 
         if (!Application.isEditor)
         {
             editorCrosshair.gameObject.SetActive(false);
         }
+        
+        standardGunPrimary.SetActive(true);
+        standardGunSecondary.SetActive(true);
+        rocketLauncherPrimary.SetActive(false);
+        rocketLauncherSecondary.SetActive(false);
+        laserPowerUpGunPrimary.SetActive(false);
+        laserPowerUpGunSecondary.SetActive(false);
     } 
     void Update()
         {
@@ -77,6 +88,12 @@ public class PlayerController : MonoBehaviour
                     Shoot(centerEye);
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                OnCorrectBalloonHit();
+            }
+            
             // if a rocket powerup is hit while the laser powerup is active, cancel the laser powerup.
             if (_pu_rocketActive)
             {
@@ -95,7 +112,20 @@ public class PlayerController : MonoBehaviour
      {
          // Play rocket SFX
          
+         standardGunPrimary.SetActive(true);
+         standardGunSecondary.SetActive(true);
+         rocketLauncherPrimary.SetActive(false);
+         rocketLauncherSecondary.SetActive(false);
+
+         Vector3 v;
+            v.x = controller.transform.rotation.x + 90;
+            v.y = controller.transform.rotation.y;
+            v.z = controller.transform.rotation.z;
+         var q = Quaternion.Euler(v);
+         
          GameObject projectile = Instantiate(rocketProjectile, controller.transform.position, controller.transform.rotation);
+         
+         projectile.transform.Rotate(controller.transform.rotation.x + 90,controller.transform.rotation.y,controller.transform.rotation.z);
          
          projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*100f);
          _pu_rocketActive = false;
@@ -169,6 +199,11 @@ public class PlayerController : MonoBehaviour
         var balloon = hit.GetComponent<PU_RocketBalloon>();
         balloon.HitBalloon();
         OnCorrectBalloonHit();
+        
+        standardGunPrimary.SetActive(false);
+        standardGunSecondary.SetActive(false);
+        rocketLauncherPrimary.SetActive(true);
+        rocketLauncherSecondary.SetActive(true);
         
         _pu_rocketActive = true;
     }
@@ -272,6 +307,13 @@ public class PlayerController : MonoBehaviour
         _pu_laserActive = true;
         powerUpLaserPrimary.SetActive(true);
         powerUpLaserSecondary.SetActive(true);
+        
+        standardGunPrimary.SetActive(false);
+        standardGunSecondary.SetActive(false);
+        rocketLauncherPrimary.SetActive(false);
+        rocketLauncherSecondary.SetActive(false);
+        laserPowerUpGunPrimary.SetActive(true);
+        laserPowerUpGunSecondary.SetActive(true);
         sfxLaser.Play();
         
         yield return new WaitForSeconds(5f);
@@ -279,6 +321,14 @@ public class PlayerController : MonoBehaviour
         _pu_laserActive = false;
         powerUpLaserPrimary.SetActive(false);
         powerUpLaserSecondary.SetActive(false);
+        
+        standardGunPrimary.SetActive(true);
+        standardGunSecondary.SetActive(true);
+        rocketLauncherPrimary.SetActive(false);
+        rocketLauncherSecondary.SetActive(false);
+        laserPowerUpGunPrimary.SetActive(false);
+        laserPowerUpGunSecondary.SetActive(false);
+        
         sfxLaser.Stop();
         powerUpLaserCoroutine = null;
     }
@@ -286,8 +336,8 @@ public class PlayerController : MonoBehaviour
     {
         if (goalBalloon != null)
         {
-            _goalBalloonCurrentScale += 0.5f;
-            goalBalloon.transform.localScale = new Vector3(_goalBalloonCurrentScale, _goalBalloonCurrentScale, _goalBalloonCurrentScale);
+            goalBalloonCurrentScale += 0.5f;
+            goalBalloon.transform.localScale = new Vector3(goalBalloonCurrentScale, goalBalloonCurrentScale, goalBalloonCurrentScale);
             print("Increasing size");
 
             // When the player has achieved the goal size, create the final explosion
