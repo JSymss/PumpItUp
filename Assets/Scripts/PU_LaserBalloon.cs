@@ -95,7 +95,7 @@ public class PU_LaserBalloon : MonoBehaviour
 	public void HitBalloon()
 	{
 		print("You hit the balloon!");
-		SpawnParticles(popPrefab,SoundManager.instance.pop);
+		SpawnParticles(popPrefab,SoundManager.instance.laserPop);
 		BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 		Destroy(gameObject);
 	}

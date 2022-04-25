@@ -9,13 +9,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject primaryController, secondaryController, centerEye;
-    public GameObject goalBalloon;
+    public GameObject goalBalloon, goalBalloonPrefab;
     public GameObject explosion;
     public GameObject powerUpLaserPrimary, powerUpLaserSecondary;
     public AudioSource sfxShoot, sfxLaser;
     public GameObject editorCrosshair;
     public GameObject rocketProjectile;
     public GameObject standardGunPrimary, standardGunSecondary, rocketLauncherPrimary, rocketLauncherSecondary, laserPowerUpGunPrimary, laserPowerUpGunSecondary;
+    public GameObject uiCanvas;
 
     public IEnumerator powerUpLaserCoroutine, freezeCoroutine;
 
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public static float goalBalloonTargetScale = 200f;
     private bool _pu_laserActive = false;
     private bool _pu_rocketActive = false;
+
+    private Quaternion goalBalloonRotation;
 
     private void Awake()
     {
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
         
         goalBalloonCurrentScale = 13f;
         goalBalloonTargetScale = 200f;
+        goalBalloonRotation = goalBalloon.transform.rotation;
 
         if (!Application.isEditor)
         {
@@ -89,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKey(KeyCode.A))
             {
                 OnCorrectBalloonHit();
             }
@@ -98,6 +102,8 @@ public class PlayerController : MonoBehaviour
             if (_pu_rocketActive)
             {
                 _pu_laserActive = false;
+                laserPowerUpGunPrimary.SetActive(false);
+                laserPowerUpGunSecondary.SetActive(false);
                 sfxLaser.Stop();
             }
             
@@ -111,17 +117,18 @@ public class PlayerController : MonoBehaviour
      void ShootRocket(GameObject controller)
      {
          // Play rocket SFX
+         SoundManager.instance.rocketLaunch.Play();
          
          standardGunPrimary.SetActive(true);
          standardGunSecondary.SetActive(true);
          rocketLauncherPrimary.SetActive(false);
          rocketLauncherSecondary.SetActive(false);
 
-         Vector3 v;
+         /*Vector3 v;
             v.x = controller.transform.rotation.x + 90;
             v.y = controller.transform.rotation.y;
             v.z = controller.transform.rotation.z;
-         var q = Quaternion.Euler(v);
+         var q = Quaternion.Euler(v);*/
          
          GameObject projectile = Instantiate(rocketProjectile, controller.transform.position, controller.transform.rotation);
          
@@ -345,8 +352,24 @@ public class PlayerController : MonoBehaviour
             {
                 // In the future, we can add more interactivity here. Example: player is alerted the big balloon is thin, and they should try shooting it to blow it up.
                 GameObject effect = Instantiate(explosion, goalBalloon.transform.position, Quaternion.identity) as GameObject;
+
+                StartCoroutine(EndSplash());
+                
                 Destroy(goalBalloon);
             }
         }
+    }
+
+    public void SpawnNewGoalBalloon()
+    {
+        GameObject gb = Instantiate(goalBalloonPrefab, new Vector3(0, 0, 350), goalBalloonRotation);
+        goalBalloon = gb;
+        goalBalloonCurrentScale = gb.transform.localScale.x;
+    }
+
+    IEnumerator EndSplash()
+    {
+        yield return new WaitForSeconds(5f);
+        uiCanvas.SetActive(true);
     }
 }

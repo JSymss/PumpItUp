@@ -95,7 +95,7 @@ public class PU_RocketBalloon : MonoBehaviour
 	public void HitBalloon()
 	{
 		print("You hit the balloon!");
-		SpawnParticles(popPrefab,SoundManager.instance.pop);
+		SpawnParticles(popPrefab,SoundManager.instance.rocketPop);
 		BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 		Destroy(gameObject);
 	}

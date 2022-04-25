@@ -34,6 +34,8 @@ public class RocketProjectile : MonoBehaviour
     void Explosion()
     {
         _exploding = true;
+        
+        SoundManager.instance.rocketExplosion.Play();
 
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion,4f);

@@ -95,7 +95,7 @@ public class PU_FreezeBalloon : MonoBehaviour
 	public void HitBalloon()
 	{
 		print("You hit the balloon!");
-		SpawnParticles(popPrefab,SoundManager.instance.pop);
+		SpawnParticles(popPrefab,SoundManager.instance.freezePop);
 		BalloonSpawner.balloonSpawnerInstance.spawnedBalloons.Remove(this.gameObject);
 		Destroy(gameObject);
 	}

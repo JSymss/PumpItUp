@@ -99,7 +99,7 @@ public class PU_MultiBalloon : MonoBehaviour
 	public void HitBalloon()
 	{
 		print("You hit the balloon!");
-		SpawnParticles(popPrefab,SoundManager.instance.pop);
+		SpawnParticles(popPrefab,SoundManager.instance.multiPop);
 		
 		
 		// Spawn multi balloons 
