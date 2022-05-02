@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb9a73df2e3d34eab4dc0580ec59f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
+  popPrefab: {fileID: 3123075737211501182, guid: a3f72d5f213bb7d458dfc2c4369e7acf,
     type: 3}
   maxVelocity: 1000
-  lifetime: 25
+  lifetime: 10
   burstOnLifetimeEnd: 0
   lifetimeEndParticlePrefab: {fileID: 0}
   minVol: 0.25
@@ -140,7 +140,7 @@ MonoBehaviour:
   lifetimeEndSound: {fileID: 0}
   pop: {fileID: 0}
   speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
+  minSpeed: 50
   maxSpeed: 100
 --- !u!54 &7268646764411398397
 Rigidbody:
@@ -194,11 +194,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8629194277011907157}
     m_Modifications:
-    - target: {fileID: 8503135237174379042, guid: c05ae0059a9f2814bb8039605324e16d,
-        type: 3}
-      propertyPath: m_Name
-      value: PU_LaserBalloon
-      objectReference: {fileID: 0}
     - target: {fileID: 2536407396455927691, guid: c05ae0059a9f2814bb8039605324e16d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -254,10 +249,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8503135237174379042, guid: c05ae0059a9f2814bb8039605324e16d,
+        type: 3}
+      propertyPath: m_Name
+      value: PU_LaserBalloon
+      objectReference: {fileID: 0}
     - target: {fileID: 298105901957028240, guid: c05ae0059a9f2814bb8039605324e16d,
         type: 3}
       propertyPath: lifetime
-      value: 25
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 298105901957028240, guid: c05ae0059a9f2814bb8039605324e16d,
+        type: 3}
+      propertyPath: minSpeed
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c05ae0059a9f2814bb8039605324e16d, type: 3}

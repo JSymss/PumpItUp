@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using Liminal.SDK.Core;
 using Liminal.SDK.VR;
 using Liminal.SDK.VR.Input;
+using Liminal.Core.Fader;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject primaryController, secondaryController, centerEye;
     public GameObject goalBalloon, goalBalloonPrefab;
-    public GameObject explosion;
+    public GameObject explosion, fireworks;
     public GameObject powerUpLaserPrimary, powerUpLaserSecondary;
     public AudioSource sfxShoot, sfxLaser;
     public GameObject editorCrosshair;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public GameObject uiCanvas;
 
     public IEnumerator powerUpLaserCoroutine, freezeCoroutine;
+
+    public Vector3 explosionLocation = new Vector3(0, 50, 350);
 
     public static float goalBalloonCurrentScale = 1f;
     public static float goalBalloonTargetScale = 200f;
@@ -134,7 +137,7 @@ public class PlayerController : MonoBehaviour
          
          projectile.transform.Rotate(controller.transform.rotation.x + 90,controller.transform.rotation.y,controller.transform.rotation.z);
          
-         projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*100f);
+         projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*500f);
          _pu_rocketActive = false;
      }
  
@@ -351,8 +354,11 @@ public class PlayerController : MonoBehaviour
             if (goalBalloon.transform.localScale.x > goalBalloonTargetScale)
             {
                 // In the future, we can add more interactivity here. Example: player is alerted the big balloon is thin, and they should try shooting it to blow it up.
-                GameObject effect = Instantiate(explosion, goalBalloon.transform.position, Quaternion.identity) as GameObject;
+                GameObject charging = Instantiate(explosion, explosionLocation, Quaternion.identity) as GameObject;
+                GameObject fireworks_1 = Instantiate(fireworks, explosionLocation, Quaternion.identity) as GameObject;
 
+                StartCoroutine(SpawnFireworks());
+                
                 StartCoroutine(EndSplash());
                 
                 Destroy(goalBalloon);
@@ -360,6 +366,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnFireworks()
+    {
+        GameObject fireworks_2 = Instantiate(fireworks, explosionLocation, Quaternion.identity) as GameObject;
+        yield return new WaitForSeconds(3f);
+        GameObject fireworks_3 = Instantiate(fireworks, explosionLocation, Quaternion.identity) as GameObject;
+    }
+    
+    private void EndGame()
+    {
+        ExperienceApp.End();
+        
+        var fader = ScreenFader.Instance;
+        fader.FadeToBlack(3f);
+        SoundManager.fadeMusicOut = true;
+            
+        print("End Game");
+    }
+    
     public void SpawnNewGoalBalloon()
     {
         GameObject gb = Instantiate(goalBalloonPrefab, new Vector3(0, 0, 350), goalBalloonRotation);
@@ -369,7 +393,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator EndSplash()
     {
-        yield return new WaitForSeconds(5f);
-        uiCanvas.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        EndGame();
     }
 }

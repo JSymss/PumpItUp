@@ -13,6 +13,7 @@ public class RocketProjectile : MonoBehaviour
     private Vector3 _shootDirection;
     public float radius = 300f;
     public GameObject explosionPrefab;
+    private float lifetime = 1.5f;
     void Start()
     {
         playerController = GameObject.Find("PlayerController");
@@ -23,7 +24,7 @@ public class RocketProjectile : MonoBehaviour
         
         _timer += Time.deltaTime;
         Debug.Log(_timer);
-        if (_timer > 5 && !_exploding)
+        if (_timer > lifetime && !_exploding)
         {
             Debug.Log("Rocket Projectile Exploding");
             Explosion();

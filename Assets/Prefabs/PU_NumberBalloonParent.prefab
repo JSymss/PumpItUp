@@ -281,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0ba523981a14e43903078b8490dcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
+  popPrefab: {fileID: 4184831820040277122, guid: 1bee58de964145a42bfce895cf98666d,
     type: 3}
-  maxVelocity: 5
-  lifetime: 25
+  maxVelocity: 200
+  lifetime: 10
   burstOnLifetimeEnd: 0
   lifetimeEndParticlePrefab: {fileID: 0}
   minVol: 0.25
@@ -292,7 +292,7 @@ MonoBehaviour:
   lifetimeEndSound: {fileID: 0}
   pop: {fileID: 0}
   speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
+  minSpeed: 50
   maxSpeed: 100
   numberOne: {fileID: 4781926934604440803}
   numberTwo: {fileID: 6163781065593684850}

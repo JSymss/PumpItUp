@@ -159,15 +159,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4324bdf65ef5a34f96204202b2affde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
+  popPrefab: {fileID: 7194952087870367276, guid: a56fa166c27c1b64a90204cdc43a72fd,
     type: 3}
   balloons:
   - {fileID: 4043870709328100998, guid: b460ea1199ab2cf41b347b207c3ead7d, type: 3}
   - {fileID: 4939680340568953667, guid: c84b706559b3bae43aef9b78293957d7, type: 3}
   - {fileID: 6257655316527812284, guid: 372366b01651aa24caf050c0a412b8f4, type: 3}
-  maxVelocity: 100
+  maxVelocity: 200
   radius: 10
-  lifetime: 25
+  lifetime: 10
   scale: 0
   minScale: 500
   maxScale: 1000
@@ -180,7 +180,7 @@ MonoBehaviour:
   lifetimeEndSound: {fileID: 0}
   pop: {fileID: 0}
   speed: {x: 0, y: 10, z: 0}
-  minSpeed: 20
+  minSpeed: 50
   maxSpeed: 100
 --- !u!64 &1253645670213268957
 MeshCollider:
@@ -313,7 +313,17 @@ PrefabInstance:
     - target: {fileID: 8546505910742110845, guid: 632be68313eed2d4885cdddb58b1ee27,
         type: 3}
       propertyPath: lifetime
-      value: 25
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546505910742110845, guid: 632be68313eed2d4885cdddb58b1ee27,
+        type: 3}
+      propertyPath: maxVelocity
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546505910742110845, guid: 632be68313eed2d4885cdddb58b1ee27,
+        type: 3}
+      propertyPath: minSpeed
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 632be68313eed2d4885cdddb58b1ee27, type: 3}

@@ -141,10 +141,10 @@ MonoBehaviour:
   green: {fileID: 2100000, guid: 9ec00d41279032f409f057f81ecbd1d6, type: 2}
   purple: {fileID: 2100000, guid: 397ff9b7699f3994d86e6c0f84695e58, type: 2}
   invalid: {fileID: 0}
-  popPrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
+  popPrefab: {fileID: 5585671604984661021, guid: c8024b1c8dba5ac45ac354c95aaf3221,
     type: 3}
-  maxVelocity: 5
-  lifetime: 25
+  maxVelocity: 10
+  lifetime: 8
   burstOnLifetimeEnd: 0
   lifetimeEndParticlePrefab: {fileID: 163116904758716872, guid: 4302e9c49e4009b4c89afa10cf5af52a,
     type: 3}
@@ -153,6 +153,6 @@ MonoBehaviour:
   lifetimeEndSound: {fileID: 0}
   pop: {fileID: 6846115116202575508, guid: bf87a5984b4fb924ab2a5f86bd6ae58b, type: 3}
   speed: {x: 0, y: 10, z: 0}
-  minSpeed: 10
-  maxSpeed: 20
+  minSpeed: 20
+  maxSpeed: 40
   colorIndex: 0
