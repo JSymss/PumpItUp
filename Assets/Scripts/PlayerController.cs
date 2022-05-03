@@ -12,16 +12,15 @@ public class PlayerController : MonoBehaviour
     public GameObject primaryController, secondaryController, centerEye;
     public GameObject goalBalloon, goalBalloonPrefab;
     public GameObject explosion, fireworks;
-    public GameObject powerUpLaserPrimary, powerUpLaserSecondary;
     public AudioSource sfxShoot, sfxLaser;
     public GameObject editorCrosshair;
-    public GameObject rocketProjectile;
+    public GameObject rocketProjectile, laserProjectile;
     public GameObject standardGunPrimary, standardGunSecondary, rocketLauncherPrimary, rocketLauncherSecondary, laserPowerUpGunPrimary, laserPowerUpGunSecondary;
     public GameObject uiCanvas;
 
     public IEnumerator powerUpLaserCoroutine, freezeCoroutine;
 
-    public Vector3 explosionLocation = new Vector3(0, 50, 350);
+    private Vector3 explosionLocation = new Vector3(0, 100, 350);
 
     public static float goalBalloonCurrentScale = 1f;
     public static float goalBalloonTargetScale = 200f;
@@ -29,13 +28,12 @@ public class PlayerController : MonoBehaviour
     private bool _pu_rocketActive = false;
 
     private Quaternion goalBalloonRotation;
+    private float _timer = 0f;
 
     private void Awake()
     {
         goalBalloonCurrentScale = goalBalloon.transform.localScale.x;
-        powerUpLaserPrimary.SetActive(false);
-        powerUpLaserSecondary.SetActive(false);
-        
+
         goalBalloonCurrentScale = 13f;
         goalBalloonTargetScale = 200f;
         goalBalloonRotation = goalBalloon.transform.rotation;
@@ -62,6 +60,21 @@ public class PlayerController : MonoBehaviour
             
                 if (device != null)
                 {
+                    if (rightHand.GetButton(VRButton.Trigger))
+                    {
+                        if (_pu_laserActive)
+                        {
+                            LaserShoot(primaryController);
+                        }
+                    }
+
+                    if (leftHand.GetButton(VRButton.Trigger))
+                    {
+                        if (_pu_laserActive)
+                        {
+                            LaserShoot(secondaryController);
+                        }
+                    }
                     if(rightHand.GetButtonDown(VRButton.Trigger))
                     {
                         if (_pu_rocketActive)
@@ -94,8 +107,22 @@ public class PlayerController : MonoBehaviour
                     }
                     Shoot(centerEye);
                 }
+
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    if (_pu_laserActive)
+                    {
+                        LaserShoot(centerEye);
+                        return;
+                    }
+                }
             }
 
+            if (Input.GetKeyDown((KeyCode.B)))
+            {
+                _pu_laserActive = true;
+            }
+            
             if (Input.GetKey(KeyCode.A))
             {
                 OnCorrectBalloonHit();
@@ -108,12 +135,6 @@ public class PlayerController : MonoBehaviour
                 laserPowerUpGunPrimary.SetActive(false);
                 laserPowerUpGunSecondary.SetActive(false);
                 sfxLaser.Stop();
-            }
-            
-            if (_pu_laserActive)
-            {
-                Shoot(primaryController);
-                Shoot(secondaryController);
             }
         }
 
@@ -140,8 +161,25 @@ public class PlayerController : MonoBehaviour
          projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*500f);
          _pu_rocketActive = false;
      }
- 
-    void Shoot(GameObject controller)
+
+     void LaserShoot(GameObject controller)
+     {
+         if (_timer >= 0.05f)
+         {
+             GameObject projectile = Instantiate(laserProjectile, controller.transform.position, controller.transform.rotation);
+         
+             projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*5000f);
+
+             _timer = 0f;
+         }
+         else
+         {
+             _timer += Time.deltaTime;
+         }
+     }
+
+     
+     void Shoot(GameObject controller)
          {
              if (!_pu_laserActive)
              {
@@ -315,9 +353,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator PowerUpLaser()
     {
         _pu_laserActive = true;
-        powerUpLaserPrimary.SetActive(true);
-        powerUpLaserSecondary.SetActive(true);
-        
+
         standardGunPrimary.SetActive(false);
         standardGunSecondary.SetActive(false);
         rocketLauncherPrimary.SetActive(false);
@@ -326,12 +362,10 @@ public class PlayerController : MonoBehaviour
         laserPowerUpGunSecondary.SetActive(true);
         sfxLaser.Play();
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         
         _pu_laserActive = false;
-        powerUpLaserPrimary.SetActive(false);
-        powerUpLaserSecondary.SetActive(false);
-        
+
         standardGunPrimary.SetActive(true);
         standardGunSecondary.SetActive(true);
         rocketLauncherPrimary.SetActive(false);

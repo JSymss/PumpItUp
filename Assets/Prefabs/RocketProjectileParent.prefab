@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   radius: 300
-  explosionPrefab: {fileID: 8714244275622671896, guid: abf8d5b763621654486813c5c8af8234,
+  explosionPrefab: {fileID: 8714244275622671896, guid: 37cd6027435cf694a8a7508ef506e286,
     type: 3}
 --- !u!64 &1017305188883031749
 MeshCollider:
