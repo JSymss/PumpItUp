@@ -164,9 +164,9 @@ public class PlayerController : MonoBehaviour
 
      void LaserShoot(GameObject controller)
      {
-         if (_timer >= 0.05f)
+         if (_timer >= 0.03f)
          {
-             GameObject projectile = Instantiate(laserProjectile, controller.transform.position, controller.transform.rotation);
+             GameObject projectile = Instantiate(laserProjectile, controller.transform.position + controller.transform.forward*2f, controller.transform.rotation);
          
              projectile.GetComponent<Rigidbody>().AddForce(controller.transform.forward*5000f);
 

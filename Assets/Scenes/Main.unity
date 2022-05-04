@@ -1933,7 +1933,7 @@ MonoBehaviour:
   editorCrosshair: {fileID: 1282707843}
   rocketProjectile: {fileID: 6700676555216271630, guid: 91ebb23f6223a0145bfbed6fb0f9e2a4,
     type: 3}
-  laserProjectile: {fileID: 275274000894679000, guid: 9273fedf3852ea34987b1199685f7f4f,
+  laserProjectile: {fileID: 8739766681344799016, guid: 9273fedf3852ea34987b1199685f7f4f,
     type: 3}
   standardGunPrimary: {fileID: 1173030341}
   standardGunSecondary: {fileID: 1338160046}
